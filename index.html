@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Transition on Button Click</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playwrite+SK:wght@100..400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="centered">
+      <button onclick="showFirstImage()">Click Me!</button>
+      <div class="image-container">
+        <img id="firstImage" src="img_1.jpg" alt="First Image" />
+        <img
+          id="secondImage"
+          src="img_2.jpg"
+          alt="Second Image"
+          style="opacity: 0"
+        />
+      </div>
+      <div id="message"></div>
+    </div>
+
+    <script>
+      function showFirstImage() {
+        const firstImage = document.getElementById("firstImage");
+        const secondImage = document.getElementById("secondImage");
+        const button = document.querySelector("button"); // Select the button
+        const message = document.getElementById("message"); // Select the message element
+
+        // Hide the button
+        button.style.display = "none";
+
+        // Show the first image
+        firstImage.style.opacity = "1";
+
+        // After a delay, transition to the second image
+        setTimeout(() => {
+          firstImage.style.opacity = "0";
+          secondImage.style.opacity = "1";
+
+          // After another delay, display the message
+          setTimeout(() => {
+            secondImage.style.opacity = "0";
+            message.textContent = "Me Loves Youuuuuuuuuuu!!"; // Set the text content of the message element
+          }, 2000); // Display message after 2 seconds
+        }, 2000); // Change image after 2 seconds
+      }
+    </script>
+  </body>
+</html>
